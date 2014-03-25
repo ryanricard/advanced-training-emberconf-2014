@@ -4,7 +4,7 @@ function buildRecord(type, data, store) {
   var factory = store.container.lookupFactory(containerKey);
 
   var record = factory.create({
-    id: data.id,
+    id: data.id.toString(),
     $data: data
   });
 
@@ -46,5 +46,11 @@ export default Ember.Object.extend({
     var identityMap = identityMapForType(type, this);
 
     return identityMap[id] || null;
+  },
+
+  find: function(type, id){
+    return new Promise(function(resolve, reject){
+      resolve(this.getById(type, id));
+    });
   }
 })
