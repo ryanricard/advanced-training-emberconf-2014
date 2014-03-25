@@ -6,5 +6,9 @@ export default Ember.Object.extend({
   $mergeChanges: function(){
     $.extend(this.get('$data'), this.get('$changes'));
     this.set('$changes', {});
+  },
+
+  save: function(){
+    this.$store.save(this.$type, this);
   }
 })
