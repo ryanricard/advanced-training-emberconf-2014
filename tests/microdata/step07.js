@@ -11,7 +11,7 @@ import Person from 'appkit/tests/helpers/person';
 
 var store, container;
 
-step(8, "Saving a record", {
+step(7, "Saving a record", {
   setup: function() {
     container = new Ember.Container();
     container.register('store:main', Store);
