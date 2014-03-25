@@ -11,4 +11,13 @@ var App = Ember.Application.extend({
   Resolver: Resolver
 });
 
+App.initializer({
+  name: 'microdata',
+  initialize: function(container, app){
+    app.register('store:main', Store);
+    app.inject('controller', 'store', 'store:main');
+    app.inject('route', 'store', 'store:main');
+  }
+});
+
 export default App;
