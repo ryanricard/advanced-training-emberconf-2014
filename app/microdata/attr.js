@@ -1,5 +1,8 @@
 export default function(){
   return function(key, value){
-    return this.$data[key];
-  }.property()
+    if(value !== undefined){
+      this.$changes[key] = value;
+    }
+    return this.$changes[key] || this.$data[key];
+  }.property('$changes', '$data')
 }
